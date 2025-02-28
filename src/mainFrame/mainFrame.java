@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 public class mainFrame {
     private JFrame frame;
     private JButton button;
-    private JTextArea textArea;
 
     private int width;
     private int height;
@@ -28,25 +27,26 @@ public class mainFrame {
     }
 
     private void initializeComponents() {
-        frame = new JFrame("Main Frame");
-        button = new JButton("Click me");
-        textArea = new JTextArea();
+        frame = new JFrame("MineWillem");
+        button = new JButton("Jouer");
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textArea.append("Hello\n");
-            }
-        });
+        button.addActionListener
+        (
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Bouton cliqué");
+                    jeuFrame jeu = new jeuFrame(frame);
+                }
+            });
     }
 
-    private void setupFrame() {
+    public void setupFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(width / 4, height / 4);
         frame.setSize(width / 2, height / 2);
         frame.setLayout(new BorderLayout());
 
-        frame.add(textArea, BorderLayout.CENTER);
         frame.add(button, BorderLayout.SOUTH);
 
         frame.setVisible(true);
@@ -58,9 +58,5 @@ public class mainFrame {
 
     public JButton getButton() {
         return this.button;
-    }
-
-    public JTextArea getTextArea() {
-        return this.textArea;
     }
 }
